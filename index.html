@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ayush Landge — Computer Science and Engineering student at Sanjivani University. Projects, skills, and learning journey.">
+  <title>Ayush Landge | Portfolio</title>
+  <style>
+    :root {
+      --bg: #080b14; --panel: #101625; --panel2: #0c1220; --text: #edf2ff;
+      --muted: #9aa8c2; --accent: #72a7ff; --accent2: #9c8cff;
+      --line: rgba(160,180,220,.16); --glow: rgba(87,137,255,.18);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background:
+        radial-gradient(ellipse at 80% 0%, rgba(83,102,255,.13), transparent 34%),
+        radial-gradient(ellipse at 0% 35%, rgba(49,151,255,.08), transparent 30%), var(--bg);
+      color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1080px, 91%); margin: 0 auto; }
+    header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(18px); background: rgba(8,11,20,.78); border-bottom: 1px solid var(--line); }
+    nav { min-height: 70px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.08rem; }
+    .brand span { color: var(--accent); }
+    .navlinks { display:flex; gap:22px; color: var(--muted); font-size:.9rem; }
+    .navlinks a:hover { color:var(--text); }
+    .hero { padding: 105px 0 80px; display:grid; grid-template-columns: 1.4fr .8fr; align-items:center; gap:55px; min-height: 570px; }
+    .eyebrow { color:var(--accent); font-size:.8rem; text-transform:uppercase; letter-spacing:.18em; font-weight:800; }
+    h1 { font-size: clamp(2.7rem, 6vw, 5.1rem); line-height:1.02; letter-spacing:-.065em; margin:17px 0 22px; }
+    h1 .shine { background:linear-gradient(100deg, #8fc2ff, #a89aff 65%, #c4b8ff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .lead { max-width:620px; color:var(--muted); font-size:1.08rem; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; border:1px solid var(--line); padding:12px 18px; border-radius:12px; font-weight:700; font-size:.92rem; transition:.2s; }
+    .btn.primary { background:linear-gradient(110deg,#79b1ff,#9d91ff); color:#07101f; border-color:transparent; }
+    .btn:hover { transform:translateY(-2px); box-shadow:0 12px 32px var(--glow); }
+    .hero-card { border:1px solid var(--line); border-radius:25px; padding:25px; background:linear-gradient(145deg,rgba(21,31,53,.92),rgba(12,17,30,.94)); box-shadow:0 25px 80px rgba(0,0,0,.25); position:relative; overflow:hidden; }
+    .hero-card:before { content:""; position:absolute; width:190px;height:190px;right:-80px;top:-80px;background:#637dff;filter:blur(90px);opacity:.28; }
+    .avatar { width:82px;height:82px;border-radius:22px;display:grid;place-items:center;background:linear-gradient(145deg,#76b6ff,#a291ff);color:#091020;font-size:1.8rem;font-weight:900; }
+    .hero-card h2 { margin:18px 0 2px; font-size:1.25rem; }
+    .hero-card p { margin:0;color:var(--muted);font-size:.92rem; }
+    .mini-stats { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:23px; }
+    .stat { padding:13px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.025); }
+    .stat strong { display:block;font-size:.92rem; }
+    .stat small { color:var(--muted); }
+    section { padding:68px 0; }
+    .section-head { margin-bottom:28px; }
+    .section-head .eyebrow { font-size:.72rem; }
+    h2.section-title { font-size:clamp(1.8rem,3vw,2.5rem);letter-spacing:-.045em;line-height:1.15;margin:8px 0 10px; }
+    .section-desc { color:var(--muted);max-width:690px;margin:0; }
+    .about-grid { display:grid;grid-template-columns:1.15fr .85fr;gap:20px; }
+    .panel { background:linear-gradient(145deg,rgba(17,25,42,.92),rgba(12,17,29,.94));border:1px solid var(--line);border-radius:20px;padding:25px; }
+    .panel p { color:var(--muted);margin-top:0; }
+    .chips { display:flex;flex-wrap:wrap;gap:9px;margin-top:18px; }
+    .chip { border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:7px 11px;color:#d5e1ff;font-size:.83rem; }
+    .skill-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:15px; }
+    .skill-card h3,.project-card h3 { margin:0 0 8px;font-size:1.04rem; }
+    .skill-card p,.project-card p { color:var(--muted);font-size:.91rem;margin:0; }
+    .icon { color:var(--accent);font-size:1.25rem;margin-bottom:14px;display:inline-block; }
+    .projects { display:grid;grid-template-columns:repeat(2,1fr);gap:17px; }
+    .project-card { position:relative;overflow:hidden; }
+    .project-card:after { content:"";position:absolute;right:-45px;top:-55px;width:130px;height:130px;border-radius:50%;background:var(--glow);filter:blur(35px); }
+    .project-type { color:var(--accent);font-size:.73rem;font-weight:800;text-transform:uppercase;letter-spacing:.13em;margin-bottom:12px; }
+    .project-card .chips { margin-top:17px; }
+    .placeholder { font-size:.78rem;color:#f0d7a3;background:rgba(235,185,92,.08);border:1px solid rgba(235,185,92,.18);padding:7px 10px;border-radius:10px;margin-top:16px;display:inline-block; }
+    .timeline { border-left:1px solid rgba(114,167,255,.35);padding-left:23px;margin-left:8px; }
+    .timeline-item { position:relative;padding-bottom:23px; }
+    .timeline-item:before { content:"";position:absolute;left:-29px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(114,167,255,.1); }
+    .timeline-item h3 { margin:0 0 4px;font-size:1rem; }
+    .timeline-item p { margin:0;color:var(--muted);font-size:.92rem; }
+    .contact { display:grid;grid-template-columns:1fr .8fr;gap:20px;align-items:stretch; }
+    .contact-link { display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);color:#dce7ff; }
+    .contact-link:last-child { border-bottom:0; }
+    footer { border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:.85rem; }
+    .footer-inner { display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap; }
+    @media(max-width:760px) {
+      .navlinks { gap:12px; font-size:.78rem; }
+      .hero { grid-template-columns:1fr; padding:72px 0 50px; gap:30px; }
+      .hero-card { max-width:480px; }
+      .about-grid,.contact { grid-template-columns:1fr; }
+      .skill-grid { grid-template-columns:1fr 1fr; }
+      .projects { grid-template-columns:1fr; }
+    }
+    @media(max-width:480px) {
+      .navlinks a:nth-child(2),.navlinks a:nth-child(3) { display:none; }
+      .skill-grid { grid-template-columns:1fr; }
+      .hero { min-height:auto; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <nav class="wrap">
+    <a class="brand" href="#home">AYUSH<span>.</span></a>
+    <div class="navlinks">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+<main>
+  <div class="wrap hero" id="home">
+    <div>
+      <div class="eyebrow">Computer Science &amp; Engineering Student</div>
+      <h1>Hi, I'm Ayush<br><span class="shine">Landge.</span></h1>
+      <p class="lead">I’m a CSE student at Sanjivani University, exploring software development, microprocessor programming, and practical technology projects. I enjoy turning classroom concepts into working demos and learning by building.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://www.linkedin.com/in/ayush-landge-b6b93036b/" target="_blank" rel="noopener noreferrer">LinkedIn profile ↗</a>
+      </div>
+    </div>
+    <aside class="hero-card">
+      <div class="avatar" aria-label="Initials AL">AL</div>
+      <h2>Ayush Landge</h2>
+      <p>Student · Builder · Lifelong learner</p>
+      <div class="mini-stats">
+        <div class="stat"><strong>Sanjivani</strong><small>University</small></div>
+        <div class="stat"><strong>CSE</strong><small>Study area</small></div>
+        <div class="stat"><strong>8086</strong><small>Assembly practice</small></div>
+        <div class="stat"><strong>Web</strong><small>Project development</small></div>
+      </div>
+    </aside>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">A little about me</div><h2 class="section-title">Learning through building.</h2><p class="section-desc">A student profile focused on curiosity, collaboration, and hands-on technical learning.</p></div>
+      <div class="about-grid">
+        <div class="panel">
+          <p>I’m studying Computer Science and Engineering at Sanjivani University. My academic interests include programming, computer architecture, web development, and using technology to solve practical problems.</p>
+          <p>Through coursework and team activities, I’ve explored 8086 assembly-language simulations, web-based project ideas, and presentations that explain technical concepts in simple language.</p>
+          <p>This portfolio is a work in progress. I’ll keep adding verified project details, demonstrations, certificates, and outcomes as I update it.</p>
+        </div>
+        <div class="panel">
+          <h3 style="margin-top:0">Currently exploring</h3>
+          <div class="chips">
+            <span class="chip">C++ &amp; OOP</span><span class="chip">HTML &amp; CSS</span><span class="chip">JavaScript</span>
+            <span class="chip">8086 Assembly</span><span class="chip">EMU8086</span><span class="chip">Software Engineering</span>
+            <span class="chip">AI / ML concepts</span><span class="chip">Team projects</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">What I'm learning</div><h2 class="section-title">Skills &amp; interests</h2><p class="section-desc">A snapshot of technologies and subjects discussed in my coursework and projects. Update this list to reflect your current confidence and experience.</p></div>
+      <div class="skill-grid">
+        <article class="panel skill-card"><span class="icon">⌘</span><h3>Programming</h3><p>C++, object-oriented programming, and beginner problem-solving practice.</p></article>
+        <article class="panel skill-card"><span class="icon">▤</span><h3>Web Development</h3><p>HTML, CSS, JavaScript, responsive page layouts, and project interfaces.</p></article>
+        <article class="panel skill-card"><span class="icon">⚙</span><h3>Microprocessors</h3><p>8086 assembly language, EMU8086 debugging, registers, and instruction flow.</p></article>
+        <article class="panel skill-card"><span class="icon">◈</span><h3>Computer Systems</h3><p>Computer organization, data transfer, I/O concepts, and DMA fundamentals.</p></article>
+        <article class="panel skill-card"><span class="icon">✦</span><h3>Project Collaboration</h3><p>Working with teammates on demonstrations, documentation, and presentations.</p></article>
+        <article class="panel skill-card"><span class="icon">↗</span><h3>Continuous Learning</h3><p>Exploring software engineering, agile practices, and industry learning resources.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">Selected work</div><h2 class="section-title">Projects &amp; experiments</h2><p class="section-desc">Add links to source code, demos, reports, and screenshots where available. Project summaries below are based on topics discussed; confirm details before presenting them as completed work.</p></div>
+      <div class="projects">
+        <article class="panel project-card">
+          <div class="project-type">Microprocessor · 8086</div><h3>Traffic Light Controller Simulation</h3>
+          <p>A small 8086 assembly-language exercise that displays RED — STOP, YELLOW — READY, and GREEN — GO, helping demonstrate program flow and DOS interrupts in an emulator.</p>
+          <div class="chips"><span class="chip">8086 Assembly</span><span class="chip">EMU8086</span><span class="chip">Debugging</span></div>
+          <span class="placeholder">Add source-code / demo link</span>
+        </article>
+        <article class="panel project-card">
+          <div class="project-type">Web · Smart campus</div><h3>VoteSphere — College Election App</h3>
+          <p>A concept for a college election interface with student sign-in, election status, and an admin-managed voting workflow.</p>
+          <div class="chips"><span class="chip">HTML / CSS / JS</span><span class="chip">Supabase</span><span class="chip">UI Design</span></div>
+          <span class="placeholder">Add repository / live demo link</span>
+        </article>
+        <article class="panel project-card">
+          <div class="project-type">AI · Operations</div><h3>WareVision AI</h3>
+          <p>A warehouse digital-twin and intelligence platform concept exploring how AI-enabled dashboards can help visualize warehouse operations.</p>
+          <div class="chips"><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Supabase</span></div>
+          <span class="placeholder">Confirm status and add project link</span>
+        </article>
+        <article class="panel project-card">
+          <div class="project-type">Embedded systems · Prototype</div><h3>Smart Helmet Safety System</h3>
+          <p>An electronics project concept combining helmet detection, alcohol sensing, wireless communication, a display, and alert outputs.</p>
+          <div class="chips"><span class="chip">Arduino</span><span class="chip">RF Communication</span><span class="chip">Sensors</span></div>
+          <span class="placeholder">Add verified build details and demo</span>
+        </article>
+        <article class="panel project-card">
+          <div class="project-type">Sustainability · Innovation</div><h3>Solar-Powered Mini Cold Storage</h3>
+          <p>A team presentation concept for solar-powered small-scale cold storage for fresh vegetables, incorporating phase-change material.</p>
+          <div class="chips"><span class="chip">Renewable Energy</span><span class="chip">PCM</span><span class="chip">Team Presentation</span></div>
+          <span class="placeholder">Add presentation / event details</span>
+        </article>
+        <article class="panel project-card">
+          <div class="project-type">Add your next project</div><h3>Project title goes here</h3>
+          <p>Write 2–3 lines explaining the problem, what you built, your role, and the result.</p>
+          <div class="chips"><span class="chip">Technology</span><span class="chip">Your role</span></div>
+          <span class="placeholder">Replace this placeholder</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">My journey</div><h2 class="section-title">Education &amp; learning</h2></div>
+      <div class="panel">
+        <div class="timeline">
+          <div class="timeline-item"><h3>Computer Science &amp; Engineering</h3><p>Sanjivani University · Current student</p><p>Expected graduation: <strong>[Add year]</strong></p></div>
+          <div class="timeline-item"><h3>Software Engineering &amp; Agile Learning</h3><p>Coursework and learning activities, including requirements, agile concepts, and software development practices.</p><p>Certificates: <strong>[Add certificate titles and links]</strong></p></div>
+          <div class="timeline-item"><h3>Workshops, presentations &amp; hackathons</h3><p>List confirmed events, team roles, awards, and dates here.</p><p><strong>[Add verified achievements]</strong></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">Let's connect</div><h2 class="section-title">Have a project in mind?</h2><p class="section-desc">I’m happy to connect with fellow students, developers, mentors, and people interested in learning through technology.</p></div>
+      <div class="contact">
+        <div class="panel"><h3 style="margin-top:0">Contact &amp; profiles</h3>
+          <a class="contact-link" href="https://www.linkedin.com/in/ayush-landge-b6b93036b/" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span>↗</span></a>
+          <a class="contact-link" href="https://github.com/ayushlandge321-ui" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span>↗</span></a>
+          <a class="contact-link" href="mailto:ayushlandge321@gmail.com"><span>Email</span><span style="color:var(--muted)">ayushlandge321@gmail.com</span></a>
+        </div>
+        <div class="panel"><span class="icon">✦</span><h3>Always learning. Always building.</h3><p>My goal is to strengthen my fundamentals, build useful projects, and share what I learn along the way.</p><a class="btn primary" href="https://www.linkedin.com/in/ayush-landge-b6b93036b/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap footer-inner"><span>© <span id="year"></span> Ayush Landge</span><span>Built with HTML, CSS &amp; JavaScript · Dark portfolio theme</span></div></footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
